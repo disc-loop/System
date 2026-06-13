@@ -3,10 +3,17 @@
   (gnu packages version-control)
   (gnu packages vim)
   (gnu packages package-management)
+  (gnu packages ssh)
+  (gnu packages xdisorg)
+  (gnu packages shells)
+  (gnu packages terminals)
+  (gnu packages web)
+  (gnu packages tmux)
+  (gnu packages docker)
   (nongnu packages linux)
   (nongnu packages mozilla)
   (nongnu system linux-initrd))
-(use-service-modules cups desktop networking ssh xorg)
+(use-service-modules cups desktop networking ssh xorg docker)
 
 (operating-system
   (kernel linux)
@@ -34,7 +41,7 @@
                   (comment "Thomas Jones")
                   (group "users")
                   (home-directory "/home/tom")
-                  (supplementary-groups '("wheel" "netdev" "audio" "video")))
+                  (supplementary-groups '("wheel" "netdev" "audio" "video" "docker")))
                 %base-user-accounts))
 
   (packages (append 
@@ -56,11 +63,13 @@
               (list 
                 (set-xorg-configuration (xorg-configuration (keyboard-layout keyboard-layout)))
                 (service plasma-desktop-service-type) (service openssh-service-type)
+                (service bluetooth-service-type)
+		(service containerd-service-type)
+		(service docker-service-type)
 		;; Increasing max open file descriptors from 1024 in case we have to build
 		;; from source.
                 (service pam-limits-service-type 
                   (list (pam-limits-entry "*" 'both 'nofile 4096))))
-                (service bluetooth-service-type)
               ;; Using substitutes otherwise everything builds from scratch! 
               (modify-services %desktop-services
                 (guix-service-type config => (guix-configuration
