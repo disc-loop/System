@@ -1,0 +1,95 @@
+(use-modules 
+  (gnu)
+  (gnu packages version-control)
+  (gnu packages vim)
+  (gnu packages package-management)
+  (nongnu packages linux)
+  (nongnu packages mozilla)
+  (nongnu system linux-initrd))
+(use-service-modules cups desktop networking ssh xorg)
+
+(operating-system
+  (kernel linux)
+
+  ;; Pulled this straight from nonguix to get wireless working. Might need to 
+  ;; come back and understand what it's doing.
+  (kernel-arguments '("modprobe.blacklist=b43,b43legacy,ssb,bcm43xx,brcm80211,brcmfmac,brcmsmac,bcma"))
+
+  (kernel-loadable-modules (list broadcom-sta))
+
+  (initrd microcode-initrd)
+
+  (firmware (list linux-firmware broadcom-bt-firmware))
+
+  (locale "en_AU.utf8")
+
+  (timezone "Australia/Melbourne")
+
+  (keyboard-layout (keyboard-layout "au"))
+
+  (host-name "computer")
+
+  (users (cons* (user-account
+                  (name "tom")
+                  (comment "Thomas Jones")
+                  (group "users")
+                  (home-directory "/home/tom")
+                  (supplementary-groups '("wheel" "netdev" "audio" "video")))
+                %base-user-accounts))
+
+  (packages (append 
+	      (list 
+		git 
+		openssh
+		neovim 
+		xclip
+		zsh
+		fzf
+		nix
+		jq
+		tmux
+		docker
+		firefox) 
+	      %base-packages))
+
+  (services (append 
+              (list 
+                (set-xorg-configuration (xorg-configuration (keyboard-layout keyboard-layout)))
+                (service plasma-desktop-service-type) (service openssh-service-type)
+		;; Increasing max open file descriptors from 1024 in case we have to build
+		;; from source.
+                (service pam-limits-service-type 
+                  (list (pam-limits-entry "*" 'both 'nofile 4096))))
+                (service bluetooth-service-type)
+              ;; Using substitutes otherwise everything builds from scratch! 
+              (modify-services %desktop-services
+                (guix-service-type config => (guix-configuration
+                  (inherit config)
+                  (substitute-urls
+                   (append (list "https://substitutes.nonguix.org")
+                     %default-substitute-urls))
+                  (authorized-keys
+                   (append (list (local-file "nonguix-signing-key.pub"))
+                     %default-authorized-guix-keys)))))))
+
+  (bootloader (bootloader-configuration
+                (bootloader grub-efi-bootloader)
+                (targets (list "/boot/efi"))
+                (keyboard-layout keyboard-layout)))
+
+  (mapped-devices (list (mapped-device
+                          (source (uuid
+                                   "11b93e9d-78b6-4e93-94e0-4e1088f90ab3"))
+                          (target "cryptroot")
+                          (type luks-device-mapping))))
+
+  (file-systems (cons* (file-system
+                         (mount-point "/boot/efi")
+                         (device (uuid "F502-5F2C" 'fat32))
+                         (type "vfat"))
+                       (file-system
+                         (mount-point "/")
+                         (device "/dev/mapper/cryptroot")
+                         (type "ext4")
+                         (dependencies mapped-devices)) 
+		       %base-file-systems)))
