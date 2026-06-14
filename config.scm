@@ -64,7 +64,6 @@
           	firefox
 		mesa 
 		mesa-utils 
-		libglvnd
           	steam) 
                 %base-packages))
 
