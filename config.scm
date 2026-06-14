@@ -10,6 +10,7 @@
   (gnu packages web)
   (gnu packages tmux)
   (gnu packages docker)
+  (gnu packages gl)
   (nonguix transformations)
   (nongnu packages linux)
   (nongnu packages mozilla)
@@ -61,6 +62,9 @@
           	tmux
           	docker
           	firefox
+		mesa 
+		mesa-utils 
+		libglvnd
           	steam) 
                 %base-packages))
 
@@ -75,6 +79,7 @@
 	      (keyboard-layout keyboard-layout))
 	    sddm-service-type)
           (service plasma-desktop-service-type) 
+	  (service gnome-desktop-service-type)
 	  (service openssh-service-type)
           (service bluetooth-service-type)
           (service docker-service-type)
