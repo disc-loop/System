@@ -73,10 +73,6 @@
 	  ;; Apparently GDM doesn't play nicely with Nvidia drivers, so we're replacing
 	  ;; it with SDDM.
 	  (service sddm-service-type)
-          (set-xorg-configuration 
-	    (xorg-configuration 
-	      (keyboard-layout keyboard-layout))
-	    sddm-service-type)
           (service plasma-desktop-service-type) 
 	  (service gnome-desktop-service-type)
 	  (service openssh-service-type)
