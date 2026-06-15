@@ -15,7 +15,6 @@
   (nongnu packages linux)
   (nongnu packages mozilla)
   (nongnu packages nvidia)
-  (nongnu packages game-client)
   (nongnu system linux-initrd))
 (use-service-modules cups desktop networking ssh xorg sddm docker)
 
@@ -63,8 +62,8 @@
           	docker
           	firefox
 		mesa 
-		mesa-utils 
-          	steam) 
+		mesa-utils
+          	steam-nvidia-580) 
                 %base-packages))
 
     (services 

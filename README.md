@@ -13,8 +13,8 @@ An attempt to schematise my entire system.
 - [x] Set up bluetooth
     - Just needed to add the service
 - [x] Install dev tools
-- [ ] Get Steam
-- [ ] Get better GPU drivers
+- [x] Get Steam
+- [x] Get better GPU drivers
 - [ ] Set up symlink farm (either Stow or Guix home)
 - [ ] Pull in dotfiles
 - [ ] Consolidate dotfiles with farm
