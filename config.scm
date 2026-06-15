@@ -54,7 +54,7 @@
           	git 
           	openssh
           	neovim 
-          	xclip
+		wl-clipboard
           	zsh
           	fzf
           	nix
@@ -74,7 +74,6 @@
 	  ;; it with SDDM.
 	  (service sddm-service-type)
           (service plasma-desktop-service-type) 
-	  (service gnome-desktop-service-type)
 	  (service openssh-service-type)
           (service bluetooth-service-type)
           (service docker-service-type)
