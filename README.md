@@ -19,3 +19,6 @@ An attempt to schematise my entire system.
 - [ ] Pull in dotfiles
 - [ ] Consolidate dotfiles with farm
 - [ ] Get terminal emulator (Ghostty or something else)
+- [ ] Set up dev environment
+    - All my favourite tools and languages
+- [ ] Write up instructions for deployment
