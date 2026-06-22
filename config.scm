@@ -8,6 +8,7 @@
   (gnu packages shells)
   (gnu packages terminals)
   (gnu packages web)
+  (gnu packages librewolf)
   (gnu packages tmux)
   (gnu packages docker)
   (gnu packages gl)
@@ -50,21 +51,22 @@
 
     (packages (append 
                 (list 
-          	git 
-          	openssh
-          	neovim 
-		wl-clipboard
-          	zsh
-          	fzf
-          	nix
-          	jq
-          	tmux
-          	docker
-          	firefox
-		mesa 
-		mesa-utils
-          	steam-nvidia-580) 
-                %base-packages))
+                  git 
+                  openssh
+                  neovim 
+                  wl-clipboard
+                  zsh
+                  fzf
+                  nix
+                  jq
+                  tmux
+                  docker
+                  firefox
+		  librewolf
+                  mesa 
+                  mesa-utils
+                  steam-nvidia-580) 
+                  %base-packages))
 
     (services 
       (append 
