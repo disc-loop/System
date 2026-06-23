@@ -97,26 +97,20 @@
                %default-authorized-guix-keys)))))))
 
     (bootloader (bootloader-configuration
-                  (bootloader grub-efi-bootloader)
-                  (targets (list "/boot/efi"))
+                  (bootloader grub-bootloader)
+                  (targets (list "/dev/nvme0n1"))
                   (keyboard-layout keyboard-layout)))
 
     (mapped-devices (list (mapped-device
-                            (source (uuid
-                                     "11b93e9d-78b6-4e93-94e0-4e1088f90ab3"))
+                            (source (uuid "1e2e2948-5bd8-47c2-bbc0-b17bca680c61"))
                             (target "cryptroot")
                             (type luks-device-mapping))))
 
     (file-systems (cons* (file-system
-                           (mount-point "/boot/efi")
-                           (device (uuid "F502-5F2C" 'fat32))
-                           (type "vfat"))
-                         (file-system
                            (mount-point "/")
                            (device "/dev/mapper/cryptroot")
                            (type "ext4")
-                           (dependencies mapped-devices)) 
-		       %base-file-systems))))
+                           (dependencies mapped-devices)) %base-file-systems))))
 
 ((nonguix-transformation-nvidia 
    #:driver nvda-580
