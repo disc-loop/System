@@ -23,10 +23,10 @@ An attempt to schematise my entire system.
     - All my favourite tools and languages
 - [ ] Write up instructions for deployment
 
-# Deployment (WIP)
+# Deployment
 1. Flash a USB with the installer iso from [Nonguix](https://gitlab.com/nonguix/nonguix#installation-image)
-1. Boot from the USB and run through the GUI installer up to the point where you can configure the system definition.
-1. Add the linux kernel, initrd microcode, and linux firmware as well as git, ssh, and a browser to make it easier to clone this repo:
+2. Boot from the USB and run through the GUI installer up to the point where you can configure the system definition.
+3. Add the linux kernel, initrd microcode, and linux firmware as well as git, ssh, and a browser to make it easier to clone this repo:
 ```diff
 - (use-modules (gnu))
 + (use-modules (gnu)
@@ -50,15 +50,21 @@ Add the imported packages:
 +               openssh
 +               librewolf
 ```
-1. Save the file.
-1. Open a TTY session with `Ctrl+Alt+F3`.
-1. Start the installation:
+4. Save the file.
+5. Open a TTY session with `Ctrl+Alt+F3`.
+6. Initialise the system:
 ```
 herd start cow-store /mnt 
 guix system init /mnt/etc/config.scm /mnt
 ```
-1. Reboot and pull out the USB.
-1. Clone this repo and reconfigure the system:
+7. Reboot and pull out the USB.
 ```
+reboot
+```
+8. Clone this repo, update Guix, and reconfigure the system:
+```
+ln -s ~/System/channels.scm ~/.config/guix/channels.scm
+guix pull
 sudo guix system reconfigure System/config.scm
 ```
+Done!
