@@ -14,7 +14,6 @@
   (gnu packages gl)
   (nonguix transformations)
   (nongnu packages linux)
-  (nongnu packages mozilla)
   (nongnu packages nvidia)
   (nongnu system linux-initrd))
 (use-service-modules cups desktop networking ssh xorg sddm docker)
@@ -61,7 +60,6 @@
                   jq
                   tmux
                   docker
-                  firefox
 		  librewolf
                   mesa 
                   mesa-utils
