@@ -22,3 +22,43 @@ An attempt to schematise my entire system.
 - [ ] Set up dev environment
     - All my favourite tools and languages
 - [ ] Write up instructions for deployment
+
+# Deployment (WIP)
+1. Flash a USB with the installer iso from [Nonguix](https://gitlab.com/nonguix/nonguix#installation-image)
+1. Boot from the USB and run through the GUI installer up to the point where you can configure the system definition.
+1. Add the linux kernel, initrd microcode, and linux firmware as well as git, ssh, and a browser to make it easier to clone this repo:
+```diff
+- (use-modules (gnu))
++ (use-modules (gnu)
++              (gnu packages ssh)
++              (gnu packages version-control)
++              (gnu packages librewolf)
++              (nongnu packages linux)
++              (nongnu system linux-initrd))
+(use-service-modules cups desktop networking ssh xorg)
+
+(operating-system
++ (kernel linux)
++ (initrd microcode-initrd)
++ (firmware (list linux-firmware))
+```
+Add the imported packages:
+```diff
++ (packages (append 
++             (list 
++               git 
++               openssh
++               librewolf
+```
+1. Save the file.
+1. Open a TTY session with `Ctrl+Alt+F3`.
+1. Start the installation:
+```
+herd start cow-store /mnt 
+guix system init /mnt/etc/config.scm /mnt
+```
+1. Reboot and pull out the USB.
+1. Clone this repo and reconfigure the system:
+```
+sudo guix system reconfigure System/config.scm
+```
