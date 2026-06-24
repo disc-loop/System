@@ -15,6 +15,7 @@ An attempt to schematise my entire system.
 - [x] Install dev tools
 - [x] Get Steam
 - [x] Get better GPU drivers
+- [ ] Figure out why Guix used user from previous generation after reconfigutation
 - [ ] Set up symlink farm (either Stow or Guix home)
 - [ ] Pull in dotfiles
 - [ ] Consolidate dotfiles with farm
