@@ -42,7 +42,7 @@
 
     (users (cons* (user-account
                     (name "tom")
-                    (comment "Thomas Jones")
+                    (comment "Tom Jones")
                     (group "users")
                     (home-directory "/home/tom")
                     (supplementary-groups '("wheel" "netdev" "audio" "video" "docker")))
@@ -75,6 +75,7 @@
           (service plasma-desktop-service-type) 
 	  (service openssh-service-type)
           (service bluetooth-service-type)
+	  (service network-manager-service-type)
           (service docker-service-type)
           (service containerd-service-type)
           ;; Increasing max open file descriptors from 1024 in case we have to build
