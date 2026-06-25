@@ -75,7 +75,6 @@
           (service plasma-desktop-service-type) 
 	  (service openssh-service-type)
           (service bluetooth-service-type)
-	  (service network-manager-service-type)
           (service docker-service-type)
           (service containerd-service-type)
           ;; Increasing max open file descriptors from 1024 in case we have to build
