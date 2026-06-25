@@ -73,5 +73,9 @@ guix pull
 sudo guix archive --authorize < System/nonguix-signing-key.pub
 sudo guix system reconfigure System/config.scm --substitute-urls='https://ci.guix.gnu.org https://bordeaux.guix.gnu.org https://substitutes.nonguix.org'
 ```
-11. Set up WiFi: https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet
-You're done!
+11. WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet) or set up DNS by adding the following to `/etc/resolv.conf`:
+```
+nameserver 1.1.1.1
+nameserver 8.8.8.8
+```
+You're done! (hopefully)
