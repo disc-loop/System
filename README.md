@@ -18,13 +18,16 @@ An attempt to schematise my entire system.
 - [x] Figure out why Guix used user from previous generation after reconfigutation
     - It was actually because the users had the same names in the config file
 - [x] Write up instructions for deployment
-- [ ] Write up instructions for maintenance
-- [ ] Set up symlink farm (either Stow or Guix home)
 - [ ] Pull in dotfiles
+- [ ] Set up symlink farm (either Stow or Guix home)
 - [ ] Consolidate dotfiles with farm
 - [ ] Get terminal emulator (Ghostty or something else)
-- [ ] Set up dev environment
+- [ ] Set up programming env
     - All my favourite tools and languages
+- [ ] Set up reading env
+    - eReader
+    - eBooks
+- [ ] Write up instructions for maintenance
 
 # Deployment
 1. Flash a USB with the installer iso from [Nonguix](https://gitlab.com/nonguix/nonguix#installation-image)
