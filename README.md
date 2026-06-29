@@ -18,6 +18,9 @@ An attempt to schematise my entire system.
 - [x] Figure out why Guix used user from previous generation after reconfigutation
     - It was actually because the users had the same names in the config file
 - [x] Write up instructions for deployment
+- [ ] Fix audio drifting
+    - Might need to get [home](https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html) going to use [pipewire](https://guix.gnu.org/manual/devel/en/html_node/Sound-Home-Services.html#PipeWire-Home-Service)
+    - Looks like you can define a home env in Guix system configs: https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype
 - [ ] Pull in dotfiles
 - [ ] Set up symlink farm (either Stow or Guix home)
 - [ ] Consolidate dotfiles with farm
