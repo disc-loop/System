@@ -28,6 +28,7 @@ An attempt to schematise my entire system.
 - [ ] Set up symlink farm (either Stow or Guix home)
 - [ ] Consolidate dotfiles with farm
 - [ ] Get terminal emulator (Ghostty or something else)
+    - [ ] Try [this channel](https://codeberg.org/look/saayix/src/branch/main/modules/saayix) as Ghostty hasn't been added to upstream yet
 - [ ] Set up programming env
     - All my favourite tools and languages
 - [ ] Set up reading env
