@@ -8,13 +8,13 @@
   (gnu packages shells)
   (gnu packages terminals)
   (gnu packages web)
-  (gnu packages librewolf)
   (gnu packages tmux)
   (gnu packages docker)
   (gnu packages gl)
   (nonguix transformations)
   (nongnu packages linux)
   (nongnu packages nvidia)
+  (nongnu packages mozilla)
   (nongnu system linux-initrd))
 (use-service-modules cups desktop networking ssh xorg sddm docker)
 
@@ -45,25 +45,22 @@
                     (comment "Tom Jones")
                     (group "users")
                     (home-directory "/home/tom")
-                    (shell (file-append "/bin/zsh"))
+                    (shell (file-append zsh "/bin/zsh"))
                     (supplementary-groups '("wheel" "netdev" "audio" "video" "docker")))
                   %base-user-accounts))
 
     (packages (append 
                 (list 
+                  zsh
                   git 
                   openssh
-                  neovim 
                   wl-clipboard
-                  zsh
-                  fzf
-                  nix
-                  jq
+                  neovim
                   tmux
+                  fzf
+                  jq
                   docker
-		  librewolf
-                  mesa 
-                  mesa-utils
+                  firefox
                   steam-nvidia-580) 
                   %base-packages))
 
