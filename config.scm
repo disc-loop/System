@@ -45,6 +45,7 @@
                     (comment "Tom Jones")
                     (group "users")
                     (home-directory "/home/tom")
+                    (shell (file-append "/bin/zsh"))
                     (supplementary-groups '("wheel" "netdev" "audio" "video" "docker")))
                   %base-user-accounts))
 
