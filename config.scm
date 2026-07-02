@@ -10,6 +10,7 @@
              (gnu packages tmux)
              (gnu packages docker)
              (gnu packages gl)
+             (gnu home services sound)
              (nonguix transformations)
              (nongnu packages linux)
              (nongnu packages nvidia)
@@ -22,6 +23,11 @@
                      xorg
                      sddm
                      docker)
+
+(define %my-home
+  (home-environment
+    (services
+     (append (list (service home-pipewire-service-type)) %base-home-services))))
 
 (define %my-os
   (operating-system
@@ -67,21 +73,22 @@
                             steam-nvidia-580) %base-packages))
 
     (services
-     (append (list
-              ;; Apparently GDM doesn't play nicely with Nvidia drivers, so we're replacing
-              ;; it with SDDM.
-              (service sddm-service-type)
-              (service plasma-desktop-service-type)
-              (service openssh-service-type)
-              (service bluetooth-service-type)
-              (service docker-service-type)
-              (service containerd-service-type)
-              ;; Increasing max open file descriptors from 1024 in case we have to build
-              ;; from source.
-              (service pam-limits-service-type
-                       (list (pam-limits-entry "*"
-                                               'both
-                                               'nofile 4096))))
+     (append (list (service guix-home-service-type
+                            `(("tom" ,my-home)))
+                   ;; Apparently GDM doesn't play nicely with Nvidia drivers, so we're replacing
+                   ;; it with SDDM.
+                   (service sddm-service-type)
+                   (service plasma-desktop-service-type)
+                   (service openssh-service-type)
+                   (service bluetooth-service-type)
+                   (service docker-service-type)
+                   (service containerd-service-type)
+                   ;; Increasing max open file descriptors from 1024 in case we have to build
+                   ;; from source.
+                   (service pam-limits-service-type
+                            (list (pam-limits-entry "*"
+                                                    'both
+                                                    'nofile 4096))))
              ;; Using substitutes otherwise everything builds from scratch!
              (modify-services %desktop-services
                ;; See comment above about GDM vs. SDDM.
