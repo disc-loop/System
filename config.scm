@@ -1,4 +1,9 @@
 (use-modules (gnu)
+             (gnu home)
+             (gnu home services)
+             (gnu home services shells)
+             (gnu home services sound)
+             (gnu home services desktop)
              (gnu packages version-control)
              (gnu packages vim)
              (gnu packages package-management)
@@ -10,12 +15,13 @@
              (gnu packages tmux)
              (gnu packages docker)
              (gnu packages gl)
-             (gnu home services sound)
+             (gnu services guix)
              (nonguix transformations)
              (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu packages mozilla)
              (nongnu system linux-initrd))
+
 (use-service-modules cups
                      desktop
                      networking
@@ -26,8 +32,19 @@
 
 (define %my-home
   (home-environment
+    (packages (append (list zsh
+                            tmux
+                            fzf
+                            jq
+                            docker
+                            firefox
+                            steam-nvidia-580
+                            flatpak)))
+
     (services
-     (append (list (service home-pipewire-service-type)) %base-home-services))))
+     (append (list (service home-zsh-service-type)
+                   (service home-dbus-service-type)
+                   (service home-pipewire-service-type)) %base-home-services))))
 
 (define %my-os
   (operating-system
@@ -60,21 +77,11 @@
                     (supplementary-groups '("wheel" "netdev" "audio" "video"
                                             "docker"))) %base-user-accounts))
 
-    (packages (append (list zsh
-                            git
-                            openssh
-                            wl-clipboard
-                            neovim
-                            tmux
-                            fzf
-                            jq
-                            docker
-                            firefox
-                            steam-nvidia-580) %base-packages))
+    (packages (append (list git openssh wl-clipboard neovim) %base-packages))
 
     (services
      (append (list (service guix-home-service-type
-                            `(("tom" ,my-home)))
+                            `(("tom" ,%my-home)))
                    ;; Apparently GDM doesn't play nicely with Nvidia drivers, so we're replacing
                    ;; it with SDDM.
                    (service sddm-service-type)
