@@ -24,11 +24,13 @@ An attempt to schematise my entire system.
 - [ ] Fix audio drifting
     - Might need to get [home](https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html) going to use [pipewire](https://guix.gnu.org/manual/devel/en/html_node/Sound-Home-Services.html#PipeWire-Home-Service)
     - Looks like you can define a home env in Guix system configs: https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype
-- [ ] Pull in dotfiles
-- [ ] Set up symlink farm (either Stow or Guix home)
-- [ ] Consolidate dotfiles with farm
-- [ ] Get terminal emulator (Ghostty or something else)
-    - [ ] Try [this channel](https://codeberg.org/look/saayix/src/branch/main/modules/saayix) as Ghostty hasn't been added to upstream yet
+- [x] Fix screensharing
+  - Just needed pipewire
+- [x] Pull in dotfiles
+- [x] Set up symlink farm (either Stow or Guix home)
+- [x] Consolidate dotfiles with farm
+- [x] Get terminal emulator (Ghostty or something else)
+    - [x] Try [this channel](https://codeberg.org/look/saayix/src/branch/main) as Ghostty hasn't been added to upstream yet
 - [ ] Set up programming env
     - All my favourite tools and languages
 - [ ] Set up reading env

@@ -20,7 +20,8 @@
              (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu packages mozilla)
-             (nongnu system linux-initrd))
+             (nongnu system linux-initrd)
+             (saayix packages terminals))
 
 (use-service-modules cups
                      desktop
@@ -39,7 +40,8 @@
                             docker
                             firefox
                             steam-nvidia-580
-                            flatpak)))
+                            flatpak
+                            ghostty)))
 
     (services
      (append (list (service home-zsh-service-type)
@@ -51,7 +53,7 @@
     (kernel linux)
 
     ;; Pulled this straight from nonguix to get wireless working. Might need to
-    ;; come back and understand what it's doing.
+    ;; come back and understand what it's doing and if it's necessary.
     (kernel-arguments '("modprobe.blacklist=b43,b43legacy,ssb,bcm43xx,brcm80211,brcmfmac,brcmsmac,bcma"))
 
     (kernel-loadable-modules (list broadcom-sta))
