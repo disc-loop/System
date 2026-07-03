@@ -1,11 +1,12 @@
 (use-modules (gnu)
              (gnu home)
              (gnu home services)
-             (gnu home services shells)
              (gnu home services sound)
              (gnu home services desktop)
              (gnu packages version-control)
              (gnu packages vim)
+             (gnu packages file)
+             (gnu packages admin)
              (gnu packages package-management)
              (gnu packages ssh)
              (gnu packages xdisorg)
@@ -33,8 +34,7 @@
 
 (define %my-home
   (home-environment
-    (packages (append (list zsh
-                            tmux
+    (packages (append (list tmux
                             fzf
                             jq
                             docker
@@ -44,8 +44,7 @@
                             ghostty)))
 
     (services
-     (append (list (service home-zsh-service-type)
-                   (service home-dbus-service-type)
+     (append (list (service home-dbus-service-type)
                    (service home-pipewire-service-type)) %base-home-services))))
 
 (define %my-os
@@ -79,7 +78,12 @@
                     (supplementary-groups '("wheel" "netdev" "audio" "video"
                                             "docker"))) %base-user-accounts))
 
-    (packages (append (list git openssh wl-clipboard neovim) %base-packages))
+    (packages (append (list git
+                            openssh
+                            wl-clipboard
+                            neovim
+                            file
+                            htop) %base-packages))
 
     (services
      (append (list (service guix-home-service-type
