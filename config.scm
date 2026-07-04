@@ -4,6 +4,14 @@
              (gnu home services sound)
              (gnu home services desktop)
              (gnu packages version-control)
+             (gnu packages commencement)
+             (gnu packages golang)
+             (gnu packages guile)
+             (gnu packages sml)
+             (gnu packages node)
+             (gnu packages smalltalk)
+             (gnu packages prolog)
+             (gnu packages forth)
              (gnu packages vim)
              (gnu packages file)
              (gnu packages admin)
@@ -15,12 +23,17 @@
              (gnu packages web)
              (gnu packages tmux)
              (gnu packages docker)
+             (gnu packages ebook)
+             (gnu packages libreoffice)
+             (gnu packages kde-graphics)
+             (gnu packages video)
              (gnu packages gl)
              (gnu services guix)
              (nonguix transformations)
              (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu packages mozilla)
+             (nongnu packages productivity)
              (nongnu system linux-initrd)
              (saayix packages terminals))
 
@@ -34,14 +47,28 @@
 
 (define %my-home
   (home-environment
-    (packages (append (list tmux
+    (packages (append (list ghostty
+                            tmux
+                            neovim
                             fzf
                             jq
                             docker
+                            gcc-toolchain
+                            go
+                            guile-3.0-latest
+                            smlnj
+                            node
+                            smalltalk
+                            gprolog
+                            gforth
                             firefox
+                            obsidian
+                            calibre
+                            libreoffice
+                            krita
+                            vlc
                             steam-nvidia-580
-                            flatpak
-                            ghostty)))
+                            flatpak)))
 
     (services
      (append (list (service home-dbus-service-type)
@@ -81,7 +108,6 @@
     (packages (append (list git
                             openssh
                             wl-clipboard
-                            neovim
                             stow
                             file
                             htop) %base-packages))
