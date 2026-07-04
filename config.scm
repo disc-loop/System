@@ -82,14 +82,13 @@
                             openssh
                             wl-clipboard
                             neovim
+                            stow
                             file
                             htop) %base-packages))
 
     (services
      (append (list (service guix-home-service-type
                             `(("tom" ,%my-home)))
-                   ;; Apparently GDM doesn't play nicely with Nvidia drivers, so we're replacing
-                   ;; it with SDDM.
                    (service sddm-service-type)
                    (service plasma-desktop-service-type)
                    (service openssh-service-type)
@@ -102,9 +101,8 @@
                             (list (pam-limits-entry "*"
                                                     'both
                                                     'nofile 4096))))
-             ;; Using substitutes otherwise everything builds from scratch!
+             ;; Using substitutes otherwise Guix builds everything from scratch!
              (modify-services %desktop-services
-               ;; See comment above about GDM vs. SDDM.
                (delete gdm-service-type)
                (guix-service-type config =>
                                   (guix-configuration (inherit config)
