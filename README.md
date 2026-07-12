@@ -47,6 +47,7 @@ An attempt to schematise my entire system.
 + (use-modules (gnu)
 +              (gnu packages ssh)
 +              (gnu packages version-control)
++              (gnu packages package-management)
 +              (nongnu packages mozilla)
 +              (nongnu packages linux)
 +              (nongnu system linux-initrd))
@@ -92,10 +93,12 @@ passwd <user>
 ```
 11. Reconfigure the system using the repo config and pass in substitutes as they're not available until after the rebuild:
 ```
-sudo guix archive --authorize < System/nonguix-signing-key.pub
-sudo guix system reconfigure System/config.scm --substitute-urls='https://ci.guix.gnu.org https://bordeaux.guix.gnu.org https://substitutes.nonguix.org'
+sudo guix archive --authorize < ~/System/nonguix-signing-key.pub
+sudo guix system reconfigure ~/System/config.scm --substitute-urls='https://ci.guix.gnu.org https://bordeaux.guix.gnu.org https://substitutes.nonguix.org'
 ```
-12. WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet) or set up DNS by adding the following to `/etc/resolv.conf`:
+
+## Troubleshooting
+- WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet) or set up DNS by adding the following to `/etc/resolv.conf`:
 ```
 nameserver 1.1.1.1
 nameserver 8.8.8.8
