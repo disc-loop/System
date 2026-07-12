@@ -31,6 +31,7 @@
              (gnu services guix)
              ;; Disabling till I get a new GPU
              ;; (nonguix transformations)
+             (nongnu packages game-client)
              (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu packages mozilla)
@@ -163,6 +164,7 @@
                                     "d703a5ca-ad49-4dad-96ba-a3d666b5738e"
                                     'ext4))
                            (type "ext4")) %base-file-systems))))
+%my-os
 
 ;; Disabling till I get a new GPU
 ;; ((nonguix-transformation-nvidia #:driver nvda-580
