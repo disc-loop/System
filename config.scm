@@ -29,7 +29,8 @@
              (gnu packages video)
              (gnu packages gl)
              (gnu services guix)
-             (nonguix transformations)
+             ;; Disabling till I get a new GPU
+             ;; (nonguix transformations)
              (nongnu packages linux)
              (nongnu packages nvidia)
              (nongnu packages mozilla)
@@ -67,7 +68,9 @@
                             libreoffice
                             krita
                             vlc
-                            steam-nvidia-580
+                            ;; Using normal steam till I get a new GPU
+                            ;; steam-nvidia-580
+                            steam
                             flatpak)))
 
     (services
@@ -142,22 +145,26 @@
                                                                         %default-authorized-guix-keys)))))))
 
     (bootloader (bootloader-configuration
-                  (bootloader grub-bootloader)
-                  (targets (list "/dev/nvme0n1"))
+                  (bootloader grub-efi-bootloader)
+                  (targets (list "/boot/efi"))
                   (keyboard-layout keyboard-layout)))
 
-    (mapped-devices (list (mapped-device
-                            (source (uuid
-                                     "1e2e2948-5bd8-47c2-bbc0-b17bca680c61"))
-                            (target "cryptroot")
-                            (type luks-device-mapping))))
+    (swap-devices (list (swap-space
+                          (target (uuid "fb328c53-f7b1-4442-b6ad-85f524219ad6")))))
 
     (file-systems (cons* (file-system
+                           (mount-point "/boot/efi")
+                           (device (uuid "CDE4-0C80"
+                                         'fat32))
+                           (type "vfat"))
+                         (file-system
                            (mount-point "/")
-                           (device "/dev/mapper/cryptroot")
-                           (type "ext4")
-                           (dependencies mapped-devices)) %base-file-systems))))
+                           (device (uuid
+                                    "d703a5ca-ad49-4dad-96ba-a3d666b5738e"
+                                    'ext4))
+                           (type "ext4")) %base-file-systems))))
 
-((nonguix-transformation-nvidia #:driver nvda-580
-                                #:configure-xorg? sddm-service-type)
- %my-os)
+;; Disabling till I get a new GPU
+;; ((nonguix-transformation-nvidia #:driver nvda-580
+;;                                 #:configure-xorg? sddm-service-type)
+;;  %my-os)
