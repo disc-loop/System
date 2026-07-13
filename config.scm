@@ -50,6 +50,7 @@
 (define %my-home
   (home-environment
     (packages (append (list ghostty
+                            zsh
                             tmux
                             neovim
                             fzf
