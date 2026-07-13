@@ -26,6 +26,7 @@
              (gnu packages ebook)
              (gnu packages libreoffice)
              (gnu packages kde-graphics)
+             (gnu packages fonts)
              (gnu packages video)
              (gnu packages gl)
              (gnu services guix)
@@ -51,6 +52,7 @@
   (home-environment
     (packages (append (list ghostty
                             zsh
+                            font-nerd-fira-code
                             tmux
                             neovim
                             fzf
