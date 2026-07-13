@@ -4,6 +4,7 @@
              (gnu home services sound)
              (gnu home services desktop)
              (gnu packages version-control)
+             (gnu packages code)
              (gnu packages commencement)
              (gnu packages golang)
              (gnu packages guile)
@@ -54,6 +55,7 @@
                             zsh
                             font-nerd-fira-code
                             tmux
+                            the-silver-searcher
                             neovim
                             fzf
                             jq
