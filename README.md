@@ -96,11 +96,22 @@ passwd <user>
 sudo guix archive --authorize < ~/System/nonguix-signing-key.pub
 sudo guix system reconfigure ~/System/config.scm --substitute-urls='https://ci.guix.gnu.org https://bordeaux.guix.gnu.org https://substitutes.nonguix.org'
 ```
+You're done! (hopefully)
 
 ## Troubleshooting
-- WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet) or set up DNS by adding the following to `/etc/resolv.conf`:
+### WiFi
+WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet) or set up DNS by adding the following to `/etc/resolv.conf`:
 ```
 nameserver 1.1.1.1
 nameserver 8.8.8.8
 ```
-You're done! (hopefully)
+### Ghostty
+I had trouble getting KDE to locate Ghostty automatically, so I needed to add the program manually in the KDE Menu Editor like so:
+```
+Name: Ghostty
+Program: ghostty
+```
+Then set the icon.
+
+### Discord
+Since I pulled in Discord as a flatpak app, I needed to add the flatpak exports to the `XDG_DATA_DIRS` path so KDE could find it. To fix this, I appended the export dirs to my `.zprofile`, but a better way to do it would be to let Guix Home add those lines.
