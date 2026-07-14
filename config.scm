@@ -46,7 +46,6 @@
                      networking
                      ssh
                      xorg
-                     sddm
                      docker)
 
 (define %my-home
@@ -124,7 +123,6 @@
     (services
      (append (list (service guix-home-service-type
                             `(("tom" ,%my-home)))
-                   (service sddm-service-type)
                    (service plasma-desktop-service-type)
                    (service openssh-service-type)
                    (service bluetooth-service-type)
@@ -138,7 +136,6 @@
                                                     'nofile 4096))))
              ;; Using substitutes otherwise Guix builds everything from scratch!
              (modify-services %desktop-services
-               (delete gdm-service-type)
                (guix-service-type config =>
                                   (guix-configuration (inherit config)
                                                       (substitute-urls (append
