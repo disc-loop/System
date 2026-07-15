@@ -31,8 +31,7 @@
              (gnu packages video)
              (gnu packages gl)
              (gnu services guix)
-             ;; Disabling till I get a new GPU
-             ;; (nonguix transformations)
+             (nonguix transformations)
              (nongnu packages game-client)
              (nongnu packages linux)
              (nongnu packages nvidia)
@@ -74,9 +73,7 @@
                             libreoffice
                             krita
                             vlc
-                            ;; Using normal steam till I get a new GPU
-                            ;; steam-nvidia-580
-                            steam
+                            steam-nvidia-580
                             flatpak)))
 
     (services
@@ -169,9 +166,7 @@
                                     "d703a5ca-ad49-4dad-96ba-a3d666b5738e"
                                     'ext4))
                            (type "ext4")) %base-file-systems))))
-%my-os
 
-;; Disabling till I get a new GPU
-;; ((nonguix-transformation-nvidia #:driver nvda-580
-;;                                 #:configure-xorg? sddm-service-type)
-;;  %my-os)
+((nonguix-transformation-nvidia #:driver nvda-580
+                                #:configure-xorg? sddm-service-type)
+ %my-os)
