@@ -20,7 +20,7 @@ An attempt to schematise my entire system.
 - [x] Write up instructions for deployment
 - [x] Figure out what's wrong with the zsh user shell
     - I just needed to make sure `.profile` existed in my home directory. I think Guix Home is supposed to create that, but I didn't set it up so it wasn't there and the user session failed(?). I had to Alt-F2 into a tty session and create the file
-- [ ] Review installed guix installed packages and consider whether to integrate them into the system config
+- [x] Review installed guix installed packages and consider whether to integrate them into the system config
 - [ ] Fix audio drifting
     - Might need to get [home](https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html) going to use [pipewire](https://guix.gnu.org/manual/devel/en/html_node/Sound-Home-Services.html#PipeWire-Home-Service)
     - Looks like you can define a home env in Guix system configs: https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype
@@ -31,12 +31,12 @@ An attempt to schematise my entire system.
 - [x] Consolidate dotfiles with farm
 - [x] Get terminal emulator (Ghostty or something else)
     - [x] Try [this channel](https://codeberg.org/look/saayix/src/branch/main) as Ghostty hasn't been added to upstream yet
-- [ ] Set up programming env
+- [x] Set up programming env
     - All my favourite tools and languages
+- [ ] Write up instructions for maintenance
 - [ ] Set up reading env
     - eReader
     - eBooks
-- [ ] Write up instructions for maintenance
 
 # Deployment
 1. Flash a USB with the installer iso from [Nonguix](https://gitlab.com/nonguix/nonguix#installation-image)
