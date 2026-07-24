@@ -61,6 +61,7 @@
                             jq
                             docker
                             gcc-toolchain
+                            make
                             go
                             guile-3.0-latest
                             smlnj
