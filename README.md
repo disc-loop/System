@@ -21,9 +21,10 @@ An attempt to schematise my entire system.
 - [x] Figure out what's wrong with the zsh user shell
     - I just needed to make sure `.profile` existed in my home directory. I think Guix Home is supposed to create that, but I didn't set it up so it wasn't there and the user session failed(?). I had to Alt-F2 into a tty session and create the file
 - [x] Review installed guix installed packages and consider whether to integrate them into the system config
-- [ ] Fix audio drifting
+- [x] Fix audio drifting
     - Might need to get [home](https://guix.gnu.org/manual/devel/en/html_node/Home-Configuration.html) going to use [pipewire](https://guix.gnu.org/manual/devel/en/html_node/Sound-Home-Services.html#PipeWire-Home-Service)
     - Looks like you can define a home env in Guix system configs: https://guix.gnu.org/manual/devel/en/html_node/Guix-Services.html#guix_002dhome_002dservice_002dtype
+    - Probably just firefox w/ Discord. Everything else seems to work
 - [x] Fix screensharing
   - Just needed pipewire
 - [x] Pull in dotfiles
@@ -33,10 +34,9 @@ An attempt to schematise my entire system.
     - [x] Try [this channel](https://codeberg.org/look/saayix/src/branch/main) as Ghostty hasn't been added to upstream yet
 - [x] Set up programming env
     - All my favourite tools and languages
-- [ ] Write up instructions for maintenance
-- [ ] Set up reading env
-    - eReader
-    - eBooks
+- [x] Write up instructions for maintenance
+- [ ] Set up media server (books, music, movies, pictures, games etc.)
+- [ ] Set up remote system access
 
 # Deployment
 1. Flash a USB with the installer iso from [Nonguix](https://gitlab.com/nonguix/nonguix#installation-image)
@@ -115,3 +115,16 @@ Then set the icon.
 
 ### Discord
 Since I pulled in Discord as a flatpak app, I needed to add the flatpak exports to the `XDG_DATA_DIRS` path so KDE could find it. To fix this, I appended the export dirs to my `.zprofile`, but a better way to do it would be to let Guix Home add those lines.
+
+## Maintenance
+There's not much you need to do honestly. Just keep guix and your packages up to date, and occasionally take out the garbage:
+```
+# Update guix
+guix pull
+
+# Update packages
+guix package upgrade
+
+# Clean up garbage (if any)
+guix gc --collect-garbage
+```
