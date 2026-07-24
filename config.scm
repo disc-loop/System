@@ -30,6 +30,7 @@
              (gnu packages fonts)
              (gnu packages video)
              (gnu packages gl)
+             (gnu packages image-viewers)
              (gnu services guix)
              (nonguix transformations)
              (nongnu packages game-client)
@@ -73,6 +74,7 @@
                             libreoffice
                             krita
                             vlc
+                            feh
                             steam-nvidia-580
                             flatpak)))
 
