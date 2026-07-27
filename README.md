@@ -99,6 +99,21 @@ sudo guix system reconfigure ~/System/config.scm --substitute-urls='https://ci.g
 You're done! (hopefully)
 
 ## Troubleshooting
+### Bootloader
+After a BIOS update, Guix failed to boot. I'm still not sure why, but this fixed it: https://felsoci.sk/blog/facing-issues-while-installing-guix.html. It seems that sometimes UEFI implementations look for a bootloader in a fallback location, i.e. the removable media path. In case that link dies, here's what I had to do:
+1. Load up my installation media to access the terminal.
+1. Mount the EFI partition:
+```
+mount /dev/nvme0n1p1 /mnt
+```
+1. Create the fallback path and copy in the bootloader like so (make sure you update the name for the copy):
+```
+cd /mnt/EFI
+mkdir boot
+cp /Guix/grubx64.efi boot/bootx64.efi
+```
+1. Reboot. It should work.
+
 ### WiFi
 WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nonguix-installation-guide/#connecting-to-the-internet) or set up DNS by adding the following to `/etc/resolv.conf`:
 ```
