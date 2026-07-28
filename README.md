@@ -138,7 +138,7 @@ There's not much you need to do honestly. Just keep guix and your packages up to
 guix pull
 
 # Update packages
-guix package upgrade
+guix upgrade
 
 # Clean up garbage (if any)
 guix gc --collect-garbage
