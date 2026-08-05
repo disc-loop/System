@@ -1,44 +1,48 @@
 (use-modules (gnu)
-             (gnu home)
-             (gnu home services)
-             (gnu home services sound)
              (gnu home services desktop)
-             (gnu packages version-control)
+             (gnu home services sound)
+             (gnu home services)
+             (gnu home)
+             (gnu packages admin)
+             (gnu packages base)
              (gnu packages code)
              (gnu packages commencement)
+             (gnu packages compression)
+             (gnu packages docker)
+             (gnu packages dns)
+             (gnu packages ebook)
+             (gnu packages file)
+             (gnu packages fonts)
+             (gnu packages forth)
+             (gnu packages gl)
              (gnu packages golang)
              (gnu packages guile)
-             (gnu packages sml)
-             (gnu packages node)
-             (gnu packages smalltalk)
-             (gnu packages prolog)
-             (gnu packages forth)
-             (gnu packages vim)
-             (gnu packages file)
-             (gnu packages admin)
-             (gnu packages package-management)
-             (gnu packages ssh)
-             (gnu packages xdisorg)
-             (gnu packages shells)
-             (gnu packages terminals)
-             (gnu packages web)
-             (gnu packages tmux)
-             (gnu packages docker)
-             (gnu packages ebook)
-             (gnu packages libreoffice)
-             (gnu packages kde-graphics)
-             (gnu packages fonts)
-             (gnu packages video)
-             (gnu packages gl)
              (gnu packages image-viewers)
+             (gnu packages kde-graphics)
+             (gnu packages libreoffice)
+             (gnu packages node)
+             (gnu packages package-management)
+             (gnu packages pdf)
+             (gnu packages prolog)
+             (gnu packages shells)
+             (gnu packages smalltalk)
+             (gnu packages sml)
+             (gnu packages ssh)
+             (gnu packages terminals)
+             (gnu packages tmux)
+             (gnu packages version-control)
+             (gnu packages video)
+             (gnu packages vim)
+             (gnu packages web)
+             (gnu packages xdisorg)
              (gnu services guix)
-             (nonguix transformations)
              (nongnu packages game-client)
              (nongnu packages linux)
-             (nongnu packages nvidia)
              (nongnu packages mozilla)
+             (nongnu packages nvidia)
              (nongnu packages productivity)
              (nongnu system linux-initrd)
+             (nonguix transformations)
              (saayix packages terminals))
 
 (use-service-modules cups
@@ -51,33 +55,33 @@
 
 (define %my-home
   (home-environment
-    (packages (append (list ghostty
-                            zsh
-                            font-nerd-fira-code
-                            tmux
-                            the-silver-searcher
-                            neovim
-                            fzf
-                            jq
+    (packages (append (list calibre
                             docker
-                            gcc-toolchain
-                            make
-                            go
-                            guile-3.0-latest
-                            smlnj
-                            node
-                            smalltalk
-                            gprolog
-                            gforth
-                            firefox
-                            obsidian
-                            calibre
-                            libreoffice
-                            krita
-                            vlc
                             feh
+                            firefox
+                            flatpak
+                            font-nerd-fira-code
+                            fzf
+                            gforth
+                            ghostty
+                            go
+                            gprolog
+                            guile-3.0-latest
+                            jq
+                            krita
+                            libreoffice
+                            neovim
+                            node
+                            obsidian
+                            smalltalk
+                            smlnj
                             steam-nvidia-580
-                            flatpak)))
+                            the-silver-searcher
+                            tmux
+                            vlc
+                            zathura
+                            zathura-pdf-mupdf
+                            zsh)))
 
     (services
      (append (list (service home-dbus-service-type)
@@ -114,12 +118,17 @@
                     (supplementary-groups '("wheel" "netdev" "audio" "video"
                                             "docker"))) %base-user-accounts))
 
-    (packages (append (list git
-                            openssh
-                            wl-clipboard
-                            stow
+    (packages (append (list (list isc-bind "utils")
                             file
-                            htop) %base-packages))
+                            gcc-toolchain
+                            git
+                            gnu-make
+                            htop
+                            openssh
+                            stow
+                            wl-clipboard
+                            unzip
+                            zip) %base-packages))
 
     (services
      (append (list (service guix-home-service-type
