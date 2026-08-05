@@ -131,6 +131,24 @@ Then set the icon.
 ### Discord
 Since I pulled in Discord as a flatpak app, I needed to add the flatpak exports to the `XDG_DATA_DIRS` path so KDE could find it. To fix this, I appended the export dirs to my `.zprofile`, but a better way to do it would be to let Guix Home add those lines.
 
+### Packages with Multiple Outputs
+Some packages export multiple outputs, e.g. `bind` has `"out"` and `"utils"`. To specify a particular output on the CLI, use this syntax:
+```
+guix install bind:utils
+```
+For `operating-system` definitions, provide a list of two items, one being the package and the other being a string specifying the output:
+```guile
+(use-modules (gnu packages dns))
+(operating-system
+ ...
+  (packages
+    (append
+      ;; Note that isc-bind is the Guile symbol for the bind package as 'bind' conflicts with the language keyword
+      (list (list isc-bind "utils"))
+            %base-packages)))
+```
+See here for more on this: https://guix.gnu.org/manual/1.5.0/en/guix.html#Packages-with-Multiple-Outputs.
+
 ## Maintenance
 There's not much you need to do honestly. Just keep guix and your packages up to date, and occasionally take out the garbage:
 ```
