@@ -95,11 +95,9 @@
     ;; come back and understand what it's doing and if it's necessary.
     (kernel-arguments '("modprobe.blacklist=b43,b43legacy,ssb,bcm43xx,brcm80211,brcmfmac,brcmsmac,bcma"))
 
-    (kernel-loadable-modules (list broadcom-sta))
-
     (initrd microcode-initrd)
 
-    (firmware (list linux-firmware broadcom-bt-firmware))
+    (firmware (list linux-firmware))
 
     (locale "en_AU.utf8")
 
