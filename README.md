@@ -120,6 +120,7 @@ WiFi may not be working so try [this](https://wiki.systemcrafters.net/guix/nongu
 nameserver 1.1.1.1
 nameserver 8.8.8.8
 ```
+
 ### Ghostty
 I had trouble getting KDE to locate Ghostty automatically, so I needed to add the program manually in the KDE Menu Editor like so:
 ```
