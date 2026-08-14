@@ -33,6 +33,7 @@
              (gnu packages version-control)
              (gnu packages video)
              (gnu packages vim)
+             (gnu packages vulkan)
              (gnu packages web)
              (gnu packages xdisorg)
              (gnu services guix)
@@ -79,8 +80,8 @@
                             the-silver-searcher
                             tmux
                             vlc
-                            zathura
-                            zathura-pdf-mupdf
+                            ;; zathura
+                            ;; zathura-pdf-mupdf
                             zsh)))
 
     (services
@@ -124,6 +125,7 @@
                             htop
                             openssh
                             stow
+                            vulkan-tools
                             wl-clipboard
                             unzip
                             zip) %base-packages))
