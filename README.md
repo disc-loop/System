@@ -35,7 +35,7 @@ An attempt to schematise my entire system.
 - [x] Set up programming env
     - All my favourite tools and languages
 - [x] Write up instructions for maintenance
-- [ ] Set up media server (books, music, movies, pictures, games etc.)
+- [x] Set up media players (books, music, movies, pictures, games etc.)
 - [ ] Set up remote system access
 
 # Deployment

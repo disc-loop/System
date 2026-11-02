@@ -8,7 +8,7 @@
              (gnu packages code)
              (gnu packages commencement)
              (gnu packages compression)
-             (gnu packages docker)
+             (gnu packages containers)
              (gnu packages dns)
              (gnu packages ebook)
              (gnu packages file)
@@ -17,11 +17,18 @@
              (gnu packages gl)
              (gnu packages golang)
              (gnu packages guile)
+             (gnu packages gdb)
              (gnu packages image-viewers)
              (gnu packages kde-graphics)
+             (gnu packages kde-utils)
+             (gnu packages kde-internet)
+             (gnu packages python)
+             (gnu packages linux)
              (gnu packages libreoffice)
              (gnu packages node)
              (gnu packages package-management)
+             (gnu packages pascal)
+             (gnu packages multiprecision)
              (gnu packages pdf)
              (gnu packages prolog)
              (gnu packages shells)
@@ -44,6 +51,7 @@
              (nongnu packages productivity)
              (nongnu system linux-initrd)
              (nonguix transformations)
+             (saayix packages sddm)
              (saayix packages terminals))
 
 (use-service-modules cups
@@ -61,27 +69,35 @@
                             feh
                             firefox
                             flatpak
-                            font-nerd-fira-code
+                            font-adobe-source-han-sans
+                            font-google-noto
+                            font-google-noto-emoji
+                            font-iosevka-term
                             fzf
+                            fpc
                             gforth
                             ghostty
+                            gmp
                             go
                             gprolog
-                            guile-3.0-latest
+                            guile-3.0
                             jq
+                            kcalc
+                            kdeconnect
                             krita
                             libreoffice
                             neovim
                             node
                             obsidian
+                            python
                             smalltalk
                             smlnj
                             steam-nvidia-580
                             the-silver-searcher
                             tmux
-                            vlc
-                            ;; zathura
-                            ;; zathura-pdf-mupdf
+                            mpv
+                            zathura
+                            zathura-pdf-mupdf
                             zsh)))
 
     (services
@@ -122,25 +138,32 @@
                             gcc-toolchain
                             git
                             gnu-make
+                            gdb
                             htop
+                            lm-sensors
                             openssh
                             stow
+                            sugar-candy-sddm-theme
+                            strace
+                            tcpdump
+                            unzip
                             vulkan-tools
                             wl-clipboard
-                            unzip
                             zip) %base-packages))
 
     (services
      (append (list (service guix-home-service-type
                             `(("tom" ,%my-home)))
-                   (service sddm-service-type)
+                   (service sddm-service-type
+                            (sddm-configuration
+                              (theme "sugar-candy")))
                    (service plasma-desktop-service-type)
                    (service openssh-service-type)
                    (service bluetooth-service-type)
                    (service docker-service-type)
                    (service containerd-service-type)
                    ;; Increasing max open file descriptors from 1024 in case we have to build
-                   ;; from source.
+                   ;; packages from source.
                    (service pam-limits-service-type
                             (list (pam-limits-entry "*"
                                                     'both
