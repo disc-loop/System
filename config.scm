@@ -84,7 +84,7 @@
                             jq
                             kcalc
                             kdeconnect
-                            krita
+                            ;; krita
                             libreoffice
                             neovim
                             node
