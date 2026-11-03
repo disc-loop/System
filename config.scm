@@ -69,6 +69,7 @@
                             feh
                             firefox
                             flatpak
+                            font-google-noto-sans-cjk
                             font-adobe-source-han-sans
                             font-google-noto
                             font-google-noto-emoji
@@ -96,8 +97,8 @@
                             the-silver-searcher
                             tmux
                             mpv
-                            zathura
-                            zathura-pdf-mupdf
+                            ;; zathura
+                            ;; zathura-pdf-mupdf
                             zsh)))
 
     (services
