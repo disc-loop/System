@@ -36,6 +36,7 @@ An attempt to schematise my entire system.
     - All my favourite tools and languages
 - [x] Write up instructions for maintenance
 - [x] Set up media players (books, music, movies, pictures, games etc.)
+- [ ] Set sddm theme image
 - [ ] Set up remote system access
 
 # Deployment

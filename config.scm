@@ -85,7 +85,7 @@
                             jq
                             kcalc
                             kdeconnect
-                            ;; krita
+                            krita
                             libreoffice
                             neovim
                             node
@@ -97,8 +97,8 @@
                             the-silver-searcher
                             tmux
                             mpv
-                            ;; zathura
-                            ;; zathura-pdf-mupdf
+                            zathura
+                            zathura-pdf-mupdf
                             zsh)))
 
     (services
