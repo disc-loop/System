@@ -51,7 +51,6 @@
              (nongnu packages productivity)
              (nongnu system linux-initrd)
              (nonguix transformations)
-             (saayix packages sddm)
              (saayix packages terminals))
 
 (use-service-modules cups
@@ -146,7 +145,6 @@
                             lm-sensors
                             openssh
                             stow
-                            sugar-candy-sddm-theme
                             strace
                             tcpdump
                             unzip
@@ -159,7 +157,8 @@
                             `(("tom" ,%my-home)))
                    (service sddm-service-type
                             (sddm-configuration
-                              (theme "sugar-candy")))
+                              (auto-login-user "tom")
+                              (auto-login-session "plasma.desktop")))
                    (service plasma-desktop-service-type)
                    (service openssh-service-type)
                    (service bluetooth-service-type)
