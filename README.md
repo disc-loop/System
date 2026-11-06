@@ -38,6 +38,7 @@ An attempt to schematise my entire system.
 - [x] Set up media players (books, music, movies, pictures, games etc.)
 - [ ] Set sddm theme image
 - [ ] Set up remote system access
+  - Looks like I need to set up SSH first so that I can connect to a VNC server on the LAN. The VNC server setup is documented here: https://guix.gnu.org/manual/1.5.0/en/html_node/VNC-Services.html
 
 # Deployment
 1. Flash a USB with the installer iso from [Nonguix](https://gitlab.com/nonguix/nonguix#installation-image)

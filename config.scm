@@ -85,7 +85,9 @@
                             jq
                             kcalc
                             kdeconnect
-                            krita
+                            ;; The failing build is a known issue:
+                            ;; https://codeberg.org/guix/guix/issues/12016
+                            ;; krita
                             libreoffice
                             neovim
                             node
