@@ -148,7 +148,6 @@
                             strace
                             tcpdump
                             unzip
-                            vulkan-tools
                             wl-clipboard
                             zip) %base-packages))
 
