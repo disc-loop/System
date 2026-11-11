@@ -40,7 +40,6 @@
              (gnu packages version-control)
              (gnu packages video)
              (gnu packages vim)
-             (gnu packages vulkan)
              (gnu packages web)
              (gnu packages xdisorg)
              (gnu services guix)
@@ -105,6 +104,8 @@
     (services
      (append (list (service home-dbus-service-type)
                    (service home-pipewire-service-type)) %base-home-services))))
+
+((nonguix-transformation-nvidia #:driver nvda-580) %my-home)
 
 (define %my-os
   (operating-system
