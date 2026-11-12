@@ -38,7 +38,6 @@
              (gnu packages terminals)
              (gnu packages tmux)
              (gnu packages version-control)
-             (gnu packages video)
              (gnu packages vim)
              (gnu packages web)
              (gnu packages xdisorg)
@@ -48,6 +47,7 @@
              (nongnu packages mozilla)
              (nongnu packages nvidia)
              (nongnu packages productivity)
+             (nongnu packages video)
              (nongnu system linux-initrd)
              (nonguix transformations)
              (saayix packages terminals))
@@ -96,7 +96,7 @@
                             steam-nvidia-580
                             the-silver-searcher
                             tmux
-                            mpv
+                            mpv-nvidia
                             zathura
                             zathura-pdf-mupdf
                             zsh)))
